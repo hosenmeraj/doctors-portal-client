@@ -11,7 +11,7 @@ const AppointmentAvilable = ({ date }) => {
     const formatDate = format(date, "PP")
 
     const { data: services, isLoading, refetch } = useQuery(["avilable", formatDate], () =>
-        fetch(`http://localhost:5000/avilable?date=${formatDate}`)
+        fetch(`https://serene-oasis-75824.herokuapp.com/avilable?date=${formatDate}`)
             .then(res => res.json())
     )
     if (isLoading) {
@@ -20,7 +20,7 @@ const AppointmentAvilable = ({ date }) => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/avilable?date=${formatDate}`)
+    //     fetch(`https://serene-oasis-75824.herokuapp.com/avilable?date=${formatDate}`)
     //         .then(res => res.json())
     //         .then(data => setServices(data))
     // }, [formatDate])
