@@ -5,24 +5,25 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const BookingAppointment = ({ treatment, date, setTreatment, refetch }) => {
-    const { _id, name, slots } = treatment
+    const { _id, name, slots, price } = treatment
     const [user, loading, error] = useAuthState(auth);
     const formatDate = format(date, "PP")
     const handleSubmit = event => {
         event.preventDefault()
         const slot = event.target.slot.value;
-        console.log(_id, name, slot);
+        console.log(_id, name, slot, price);
         setTreatment(null)
         const booking = {
             treatmentId: _id,
             treatment: name,
             date: formatDate,
             slot,
+            price,
             patient: user.email,
             patientName: user.displayName,
             phone: event.target.phone.value
         }
-        fetch('http://localhost:5000/booking', {
+        fetch('https://serene-oasis-75824.herokuapp.com/booking', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

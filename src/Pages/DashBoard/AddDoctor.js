@@ -9,7 +9,7 @@ const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const { data: services, isLoading } = useQuery('services', () =>
-        fetch('http://localhost:5000/service')
+        fetch('https://serene-oasis-75824.herokuapp.com/service')
             .then(res => res.json()
             )
     )
@@ -42,7 +42,7 @@ const AddDoctor = () => {
                         img: img
 
                     }
-                    fetch('http://localhost:5000/doctor', {
+                    fetch('https://serene-oasis-75824.herokuapp.com/doctor', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
